@@ -1,18 +1,21 @@
 package am.test.sysMonitor.timer;
 
 import java.util.TimerTask;
-import am.test.sysMonitor.utils.MonitorUtils;
+
+import devices.CPUUsageManager;
+import devices.DeviceManager;
+import devices.PrinterManager;
 
 public class MonitorTimer extends TimerTask {
 
 
     @Override
     public void run() {
-        MonitorUtils.printPrintersStatus();
-        MonitorUtils.printCPUUsageStatus();
+        DeviceManager printer = new PrinterManager();
+        printer.printStatus();
         
-        MonitorUtils.printUSBDevicesStatus();
-        MonitorUtils.printExternalDisplayStatus();
+        DeviceManager cpuUsage = new CPUUsageManager();
+        cpuUsage.printStatus();
         
     }
 
